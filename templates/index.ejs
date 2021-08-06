@@ -41,6 +41,12 @@
         padding-left: 10px;
         display:inline;
       }
+      button#atualizar-btn {
+        background: #4cb165;
+      }
+      button#detalhes-btn {
+        background: grey;
+      }
     </style>
 
   <script src="js/search.js"></script>
@@ -68,11 +74,11 @@
       </div>
       <div id="actions">
         <form action="/">
-          <button type="submit">Mais detalhes</button>
+          <button id="detalhes-btn" type="submit">Mais detalhes</button>
         </form>
         <form method="post" action="purchase">
-          <input type="hidden" name="dvdCode" value="DVD-018473664">
-          <button type="submit">Atualizar por (R$50,00)</button>
+          <input type="hidden" name="dvdCode" value="PLAN-018473664">
+          <button id="atualizar-btn" type="submit">Atualizar por (R$50,00)</button>
           <p><%= typeof purchaseMessage !== 'undefined' ? purchaseMessage : ''%></p>
         </form>  
       </div>
