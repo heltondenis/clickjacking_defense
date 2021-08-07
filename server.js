@@ -14,9 +14,11 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   cookie: {
-    httpOnly: true
+    httpOnly: true,
+    sameSite: 'strict'
   }
 }));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function (req, res) {
@@ -29,7 +31,7 @@ app.get('/', function (req, res) {
 app.get('/session/new', function (req, res) {
   req.session.isValid = true;
   req.session.username = 'Helton';
-  req.session.email = 'helton@teste.com';
+  req.session.email = 'helton@xxx.com';
   res.redirect('/');
 });
 
@@ -38,12 +40,15 @@ app.post('/purchase', function (req, res) {
     res.render('index', {
       isValidSession: req.session.isValid,
       username: req.session.username,
-      purchaseMessage: 'Sua compra foi cobrada em seu cartão de crédito'
+      purchaseMessage: 'Pagamento realizaDO.'
     });
   } else {
     res.redirect('/');
   }
 });
+
+
+
 
 app.listen(port, () => console.log(`The server is listening at http://localhost:${port}`));
 
